@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" onload="onLoad()">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -15,18 +15,18 @@
 
     <div class="inputs">
         <div class="input_group">
-            <label for="mi" class="name" value="Mi">Mi: Rs.20000</label>
-            <input type="number" id="mi" class="amount" name="mi" placeholder="Enter amount">
+            <label for="mi">Mi: Rs.20000</label>
+            <input type="number" id="mi" class="amount" placeholder="Enter amount">
         </div>
         <br>
         <div class="input_group">
-            <label for="samsung" class="name" value="Samsung">Samsung: Rs.30000</label>
-            <input type="number" id="samsung" class="amount" name="samsung" placeholder="Enter amount">
+            <label for="samsung">Samsung: Rs.30000</label>
+            <input type="number" id="samsung" class="amount" placeholder="Enter amount">
         </div>
         <br>
         <div class="input_group">
-            <label for="oppo" class="name" value="Oppo">Oppo: Rs.50000</label>
-            <input type="number" id="oppo" class="amount" name="oppo" placeholder="Enter amount">
+            <label for="oppo">Oppo: Rs.50000</label>
+            <input type="number" id="oppo" class="amount" placeholder="Enter amount">
         </div>
     </div>
 
@@ -48,17 +48,17 @@
         <h4>Package Type</h4>
 
         <div class="input_group">
-            <input type="radio" id="plastic" name="package" value="Plastic">
+            <input type="radio" id="plastic" class="package" value="Plastic">
             <label for="plastic">Plastic [Rs.500]</label>
         </div>
 
         <div class="input_group">
-            <input type="radio" id="bag" name="package" value="Bag">
+            <input type="radio" id="bag" class="package" value="Bag">
             <label for="bag">Bag [Rs.1000]</label>
         </div>
 
         <div class="input_group">
-            <input type="radio" id="gift" name="package" value="Gift">
+            <input type="radio" id="gift" class="package" value="Gift">
             <label for="plastic">Gift [Rs.5000]</label>
         </div>
     </div>
@@ -91,16 +91,6 @@
             </tr>
         </thead>
         <tbody id="cart"></tbody>
-        <tfoot>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="totality"> 0 </td>
-            </tr>
-        </tfoot>
     </table>
 </div>
 

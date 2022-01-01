@@ -1,87 +1,97 @@
 "use strict"
 
+function $(arg) {
+    return document.getElementsByClassName(arg);
+}
+
+let total_amount = 0; // total quantity of mobile
+let total_price = 0; // total quantity of mobile
+
 // Selectors
-const mobileName = document.getElementsByClassName('name');
-const amount = document.getElementsByClassName("amount");
-const deliveryType = document.getElementsByClassName("delivery");
-const packageType = document.getElementsByClassName("package");
+
+
 
 // sets amount for vat
-let vatAmount;
+// let vatAmount;
 
-// initializations
-let nameArray = [];
-let amountArray = [];
-let deliveryArray = [];
-let packageArray = [];
+// // initializations
+// let nameArray = [];
+// let amountArray = [];
+// let deliveryArray = [];
+// let packageArray = [];
 
-function setArray(get, set) {
-    for (let i = 0; i < get.length; i++) {
-        set.push(get[i].value);
-    }
-    console.log(set);
-}
+// function setArray(pakoArray, banaakoArray) {
+//     for (let i = 0; i < pakoArray.length; i++) {
+//         banaakoArray.push(pakoArray[i].value);
+//     }
+//     console.log(banaakoArray);
+// }
 
-setArray(mobileName, nameArray);
-setArray(amount, amountArray);
-setArray(deliveryType, deliveryArray);
-setArray(packageType, packageArray);
+// setArray(mobileName, nameArray);
+// setArray(amount, amountArray);
+// setArray(deliveryType, deliveryArray);
+// setArray(packageType, packageArray);
 
-function checker(arr) {
-    let mobileName;
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i].value > 0) {
-            mobileName = arr[i].label;
-        }
-    }
-    console.log(mobileName);
-}
-
-checker(amount);
-
-// function displayRadioValue(arr) {
-//     // loop throught the received array
+// function checker(arr) {
+//     let mobileName;
 //     for (let i = 0; i < arr.length; i++) {
-//         // Check if the radio button is selected
-//         if (arr[i].isChecked) {
-//             let val = arr[i].value;
-//             console.log(val);
+//         if (arr[i].value > 0) {
+//             mobileName = arr[i].label;
 //         }
 //     }
+//     console.log(mobileName);
 // }
 
-// function checkVAT() {
-//     let select = document.getElementsByTagName('select');
-//
-//     switch (select.value) {
-//         case 'ktm': value = 0.13*price;
-//         break;
-//         case 'ltp': value = "0%"
-//         break;
-//         case 'bkt': value = "0%"
-//         break;
-//         default: console.log("error");
-//     }
-// }
+// checker(amount);
 
-const addToList = (mobileName, amount, deliveryType, packageType, vat, total) => {
+
+
+//Button Listener
+document.getElementById("btn").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Take multiple inputs with similar class as an array.
+    const amount_array = $('amount');
+    let mobile_amount = [];
+
+    const delivery = $('delivery');
+    let delivery_Type = [];
+
+    const packageType = $('package');
+    let package_Type = [];
+
+    const grandTotal = $('grandTotal');
+
+    function setArray() {
+        for(let i=0; i < amount_array.length; i++) {
+            mobile_amount.push(amount_array[i].value)
+
+            if (mobile_amount[i] > 0) {
+                total_amount += parseInt(mobile_amount[i]);
+            }
+        }
+
+        console.log(mobile_amount);
+        console.log(total_amount);
+    }
+
+    setArray();
+
+    let addToList = (mobileName, amount, deliveryType, packageType, vat, total) => {
     let list = document.querySelector("#cart");
     const row = document.createElement("tr");
 
-row.innerHTML = `
-    <td>${mobileName}</td>
-    <td>${amount}</td>
-    <td>${deliveryType}</td>
-    <td>${packageType}</td>
-    <td>${vatAmount}</td>
-    <td>${total}</td>
+    row.innerHTML = `
+        <td>${mobileName}</td>
+        <td>${amount}</td>
+        <td>${deliveryType}</td>
+        <td>${packageType}</td>
+        <td>${vat}</td>
+        <td>${total}</td>
     `;
 
     list.appendChild(row);
-};
+    };
 
-//Button Listener
-document.getElementById("btn").addEventListener("click", () => {
-    displayRadioValue(deliveryType);
-    addToList('', amountArray[0], '', '', '', '')
+    addToList("Mi", total_amount, "PickUp", "Gift", 0, 20000);
 });
