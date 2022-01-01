@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" onload="onLoad()">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="#">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>Mero mobile bazar</h1>
+
+    <div class="inputs">
+        <div class="input_group">
+            <label for="mi" class="name" value="Mi">Mi: Rs.20000</label>
+            <input type="number" id="mi" class="amount" name="mi" placeholder="Enter amount">
+        </div>
+        <br>
+        <div class="input_group">
+            <label for="samsung" class="name" value="Samsung">Samsung: Rs.30000</label>
+            <input type="number" id="samsung" class="amount" name="samsung" placeholder="Enter amount">
+        </div>
+        <br>
+        <div class="input_group">
+            <label for="oppo" class="name" value="Oppo">Oppo: Rs.50000</label>
+            <input type="number" id="oppo" class="amount" name="oppo" placeholder="Enter amount">
+        </div>
+    </div>
+
+    <div class="radios">
+        <h4>Delivery Type</h4>
+
+        <div class="input_group">
+            <input type="radio" id="home" name="delivery" class="delivery" value="Home">
+            <label for="home">Home [Rs. 100]</label>
+        </div>
+
+        <div class="input_group">
+            <input type="radio" id="pickup" name="delivery" class="delivery" value="PickUp">
+            <label for="pickup">Pickup [Free]</label>
+        </div>
+    </div>
+
+    <div class="checks">
+        <h4>Package Type</h4>
+
+        <div class="input_group">
+            <input type="radio" id="plastic" name="package" value="Plastic">
+            <label for="plastic">Plastic [Rs.500]</label>
+        </div>
+
+        <div class="input_group">
+            <input type="radio" id="bag" name="package" value="Bag">
+            <label for="bag">Bag [Rs.1000]</label>
+        </div>
+
+        <div class="input_group">
+            <input type="radio" id="gift" name="package" value="Gift">
+            <label for="plastic">Gift [Rs.5000]</label>
+        </div>
+    </div>
+
+    <div class="location">
+        <h4>Location</h4>
+
+        <select class="values" name="values">
+            <option id="ktm" value="ktm">Kathmandu [13%]</option>
+            <option id="ltp" value="ltp">Lalitpur [0%]</option>
+            <option id="bkt" value="bkt">Bhaktapur [0%]</option>
+        </select>
+    </div>
+
+    <button id="btn" type="submit" name="button">Add To Cart</button>
+
+</div>
+
+<!-- TOTALITY -->
+<div class="total">
+    <table>
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Amount</th>
+                <th>Delivery Type</th>
+                <th>Package Type</th>
+                <th>VAT Amount</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="cart"></tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="totality"> 0 </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+<script src="js/custom.js"></script>
+
+</body>
+</html>
