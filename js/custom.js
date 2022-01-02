@@ -1,97 +1,95 @@
-"use strict"
-
-function $(arg) {
-    return document.getElementsByClassName(arg);
+function $(id) {
+    return document.getElementById(id);
 }
 
-let total_amount = 0; // total quantity of mobile
-let total_price = 0; // total quantity of mobile
+// initially, hide the grandtotal of the products.
+let grandTotal = document.getElementById('grandTotal');
+grandTotal.style.visibility = 'hidden';
 
-// Selectors
-
-
-
-// sets amount for vat
-// let vatAmount;
-
-// // initializations
-// let nameArray = [];
-// let amountArray = [];
-// let deliveryArray = [];
-// let packageArray = [];
-
-// function setArray(pakoArray, banaakoArray) {
-//     for (let i = 0; i < pakoArray.length; i++) {
-//         banaakoArray.push(pakoArray[i].value);
-//     }
-//     console.log(banaakoArray);
-// }
-
-// setArray(mobileName, nameArray);
-// setArray(amount, amountArray);
-// setArray(deliveryType, deliveryArray);
-// setArray(packageType, packageArray);
-
-// function checker(arr) {
-//     let mobileName;
-//     for (let i = 0; i < arr.length; i++) {
-//         if (arr[i].value > 0) {
-//             mobileName = arr[i].label;
-//         }
-//     }
-//     console.log(mobileName);
-// }
-
-// checker(amount);
-
-
-
-//Button Listener
-document.getElementById("btn").addEventListener("click", (e) => {
+// Add To Cart eventlistener.
+$('btn').addEventListener("click", e => {
     e.preventDefault();
 
-    // Take multiple inputs with similar class as an array.
-    const amount_array = $('amount');
-    let mobile_amount = [];
+    let m_qt = $('mi').value;
+    let s_qt = $('samsung').value;
+    let o_qt = $('oppo').value;
 
-    const delivery = $('delivery');
-    let delivery_Type = [];
+    let m_price = 0;
+    let s_price = 0;
+    let o_price = 0;
+    let total_qt = 0;
+    let total_price = 0;
+    let rand = [];
 
-    const packageType = $('package');
-    let package_Type = [];
-
-    const grandTotal = $('grandTotal');
-
-    function setArray() {
-        for(let i=0; i < amount_array.length; i++) {
-            mobile_amount.push(amount_array[i].value)
-
-            if (mobile_amount[i] > 0) {
-                total_amount += parseInt(mobile_amount[i]);
-            }
-        }
-
-        console.log(mobile_amount);
-        console.log(total_amount);
+    if(m_qt != "") {
+        m_price += 20000 * parseInt(m_qt);
+        total_qt += parseInt(m_qt);
+        rand.push(m_qt);
+    }
+    if(s_qt != "") {
+        s_price += 30000 * parseInt(s_qt);
+        total_qt += parseInt(s_qt);
+        rand.push(s_qt);
+    }
+    if(o_qt != "") {
+        o_price += 50000 * parseInt(o_qt);
+        total_qt += parseInt(o_qt);
+        rand.push(o_qt);
     }
 
-    setArray();
+    total_price = m_price + s_price + o_price;
 
-    let addToList = (mobileName, amount, deliveryType, packageType, vat, total) => {
-    let list = document.querySelector("#cart");
-    const row = document.createElement("tr");
+    // // D E L I V E R Y ---------------------------
 
-    row.innerHTML = `
-        <td>${mobileName}</td>
-        <td>${amount}</td>
-        <td>${deliveryType}</td>
-        <td>${packageType}</td>
-        <td>${vat}</td>
-        <td>${total}</td>
-    `;
+    let delivery = document.querySelector('input[type="radio"]:checked').value;
+    let del_price = 0;
 
-    list.appendChild(row);
-    };
+    if(delivery === "home") {
+        del_price += 100;
+    }
 
-    addToList("Mi", total_amount, "PickUp", "Gift", 0, 20000);
-});
+    // P A C K I N G ---------------------------
+
+    let packing = document.querySelector('input[class="package"]:checked').value;
+    let packing_price = 0;
+    
+    switch (packing) {
+        case "plastic": packing_price += 500
+        break;
+
+        case "bag": packing_price += 1000
+        break;
+
+        case "gift": packing_price += 5000
+        break;
+    
+        default: alert("Select At least One Packing Type..")
+    }
+
+    // // addToList adds the values in the parameters to the table.
+    function addToList(mobileName, amount, deliveryType, packageType, vatAmount, total) {
+        const list = $('cart');
+        let row = document.createElement('tr');
+
+        row.innerHTML = `
+        <td> ${mobileName} </td>
+        <td> ${amount} </td>
+        <td> ${deliveryType} </td>
+        <td> ${packageType} </td>
+        <td> ${vatAmount} </td>
+        <td> ${total} </td>
+        `
+
+        list.appendChild(row);
+    }
+
+    for(let i=0; i<rand.length; i++) {
+        
+    }
+
+    // // makes the grandtotal visible
+    grandTotal.style.visibility = 'visible';
+
+    // // resets the form with default values
+    // $('form').reset();
+})
