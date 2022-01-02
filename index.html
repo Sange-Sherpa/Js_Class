@@ -34,7 +34,7 @@
         <h4>Delivery Type</h4>
 
         <div class="input_group">
-            <input type="radio" id="home" name="delivery" class="delivery" value="home">
+            <input type="radio" id="home" name="delivery" class="delivery" value="Home">
             <label for="home">Home [Rs. 100]</label>
         </div>
 
@@ -48,17 +48,17 @@
         <h4>Package Type</h4>
 
         <div class="input_group">
-            <input type="radio" id="plastic" class="package" name="package" value="plastic">
+            <input type="radio" id="plastic" class="package" name="package" value="Plastic">
             <label for="plastic">Plastic [Rs.500]</label>
         </div>
 
         <div class="input_group">
-            <input type="radio" id="bag" class="package" name="package" value="bag">
+            <input type="radio" id="bag" class="package" name="package" value="Bag">
             <label for="bag">Bag [Rs.1000]</label>
         </div>
 
         <div class="input_group">
-            <input type="radio" id="gift" class="package" name="package" value="gift">
+            <input type="radio" id="gift" class="package" name="package" value="Gift">
             <label for="plastic">Gift [Rs.5000]</label>
         </div>
     </div>
@@ -66,7 +66,7 @@
     <div class="location">
         <h4>Location</h4>
 
-        <select class="values" name="values">
+        <select id="location">
             <option id="ktm" value="ktm">Kathmandu [13%]</option>
             <option id="ltp" value="ltp">Lalitpur [0%]</option>
             <option id="bkt" value="bkt">Bhaktapur [0%]</option>
@@ -86,13 +86,14 @@
                 <th>Amount</th>
                 <th>Delivery Type</th>
                 <th>Package Type</th>
-                <th>VAT Amount</th>
                 <th>Total</th>
             </tr>
         </thead>
         <tbody id="cart"></tbody>
     </table>
-    <p id="grandTotal"> Grand Total: 0 </p>
+
+    <p id="vat_price"></p>
+    <p id="grandTotal"></p>
 </div>
 
 
