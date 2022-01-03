@@ -1,3 +1,10 @@
-export default function divide(a,b) {
-    return a/b;
+export class Divide {
+    constructor(a, b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    divide() {
+        return this.a / this.b;
+    }
 }

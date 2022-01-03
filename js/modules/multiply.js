@@ -1,3 +1,10 @@
-export default function multiply(a,b) {
-    return a * b;
+export class Multiply {
+    constructor(a, b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    multiply() {
+        return this.a * this.b;
+    }
 }
